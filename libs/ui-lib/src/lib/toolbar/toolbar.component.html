@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="mat-elevation-z4">
+
+  <button mat-mini-fab *ngIf="isAuthenticated.value" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="logo">
+    <img src="assets/logo.png" alt="Logo">
+  </span>
+  <span class="title">
+    {{title}}
+  </span>
+
+<span class="spacer"></span>
+
+<span>
+  <button class="logout" mat-mini-fab (click)="logout()" *ngIf="isAuthenticated.value; else elseBlock">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+  <ng-template #elseBlock>
+  <button class="login" mat-mini-fab (click)="login()">
+    <mat-icon>person</mat-icon>
+  </button>
+  </ng-template>
+</span>
+
+
+</mat-toolbar>

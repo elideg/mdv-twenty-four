@@ -1,1 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+@import './theme.scss';
+@import '~bootstrap-utilities';
+@import '~bootstrap-4-grid';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+mat-sidenav-container {
+  height: 100vh;
+}
+mat-sidenav {
+  width: 200px;
+}
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+.mat-sidenav-container {
+  background: whitesmoke;
+  flex: 1;
+}
+.nav-link {
+  color: rgba(0, 0, 0, 0.54);
+  display: flex !important;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.list-container {
+  margin: 20px;
+  .full-width-table {
+    width: 100%;
+  }
+  tr {
+    -webkit-transition: background-color 300ms;
+    -moz-transition: background-color 300ms;
+    -ms-transition: background-color 300ms;
+    -o-transition: background-color 300ms;
+    transition: background-color 300ms;
+  }
+  tr:not(.mat-header-row):hover {
+    background: whitesmoke;
+    cursor: pointer;
+  }
+}
+.hover:hover{
+  background: whitesmoke;
+  cursor: pointer;
+}
+mat-toolbar {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  z-index: 900;
+  > .mat-mini-fab {
+    margin-right: 10px;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }
+  .title {
+    vertical-align: middle;
+  }
+  .logo {
+    margin-left: 20px;
+    img {
+      vertical-align: middle;
+      width: 50px;
+      height: auto;
+    }
+  }
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
