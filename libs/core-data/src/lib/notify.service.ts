@@ -10,7 +10,8 @@ export class NotifyService {
 
   notify(message: string, action = 'ok') {
     this.snackBar.open(message, action, {
-      duration: 1000
+      duration: 1000,
+      panelClass: ['custom-color']
     })
   }
 }

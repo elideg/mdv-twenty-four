@@ -1,1 +1,21 @@
-<p>pokemon-item works!</p>
+<div class="d-flex justify-content-center mt-3">
+  <button mat-button [routerLink]="['/pokemon']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-card class="col-6" *ngIf="pokemons$ | async as pokemon">
+    <mat-card-header class="align-self-center">
+      <mat-card-title>
+        <h3 mat-line>Pokemon Id</h3>
+        <p>{{pokemon.id}}</p>
+        <h3 mat-line>Pokemon Name</h3>
+        <p>{{pokemon.name}}</p>
+        <h3 mat-line>Pokemon Base Experience</h3>
+        <p>{{pokemon.base_experience}}</p>
+        <h3 mat-line>Pokemon Height</h3>
+        <p>{{pokemon.height}}</p>
+        <h3 mat-line>Pokemon Weight</h3>
+        <p>{{pokemon.weight}}</p>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>

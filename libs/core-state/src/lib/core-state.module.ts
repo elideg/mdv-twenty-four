@@ -1,4 +1,4 @@
-import { PokemonsEffects } from './pokemon/pokemon.effects';
+import { PokemonsEffects } from './pokemon/pokemons.effects';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

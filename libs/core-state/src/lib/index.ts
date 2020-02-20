@@ -1,9 +1,9 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as fromPokemon from './pokemon/pokemon.reducer';
+import * as fromPokemon from './pokemon/pokemons.reducer';
 
 export interface AppState {
-  pokemons: fromPokemon.FeatureState;
+  pokemons: fromPokemon.PokemonsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {

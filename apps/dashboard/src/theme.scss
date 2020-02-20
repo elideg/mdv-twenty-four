@@ -8,7 +8,7 @@ $mat-primary: (
   200: #e6e6e6,
   300: #d9d9d9,
   400: #cccccc,
-  500: #0d0d0d,
+  500: #DD5E57,
   600: #b3b3b3,
   700: #a6a6a6,
   800: #999999,
@@ -41,7 +41,7 @@ $mat-accent: (
   200: #cccccc,
   300: #bfbfbf,
   400: #b3b3b3,
-  500: #ffffff,
+  500: #F3C949,
   600: #999999,
   700: #8c8c8c,
   800: #808080,
@@ -56,9 +56,9 @@ $mat-accent: (
     200: $black-87-opacity,
     300: $black-87-opacity,
     400: $black-87-opacity,
-    500: rgb(0, 0, 0),
-    600: rgb(0, 0, 0),
-    700: rgb(0, 0, 0),
+    500: rgb(59, 59, 59),
+    600: rgb(255, 255, 255),
+    700: rgb(255, 255, 255),
     800: $white-87-opacity,
     900: $white-87-opacity,
     A100: $black-87-opacity,
@@ -71,6 +71,6 @@ $mat-accent: (
 $custom-theme-primary: mat-palette($mat-primary);
 $custom-theme-accent: mat-palette($mat-accent);
 
-$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent);
+$custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent);
 
 @include angular-material-theme($custom-theme);

@@ -1,1 +1,16 @@
-<p>pokemon works!</p>
+<div class="container d-flex mt-3">
+  <div class="col-6">
+    <mdv-twenty-four-pokemon-list [pokemons]="pokemons$ | async"
+                          (selected)="selectPokemon($event)"
+                          (deleted)="deletePokemon($event)">
+    </mdv-twenty-four-pokemon-list>
+  </div>
+
+  <div class="col-6">
+    <mdv-twenty-four-pokemons-details [pokemon]="selectedPokemon$ | async"
+                              [form]="form"
+                              (saved)="savePokemon($event)"
+                              (cancelled)="cancel()">
+    </mdv-twenty-four-pokemons-details>
+  </div>
+</div>

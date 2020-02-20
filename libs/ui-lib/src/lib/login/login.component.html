@@ -1,4 +1,4 @@
-<div class="container mt-5 d-flex justify-content-center container-fixed">
+<div class="container col-3 justify-content-center mt-5">
   <div class="card-wrapper">
     <mat-card class="mat-elevation-z1 col-8">
       <mat-card-header>
@@ -12,7 +12,7 @@
           <mat-form-field appearance="outline" color="primary" class="w-100">
             <mat-label>Username</mat-label>
             <input matInput type="text" placeholder="Enter Email" formControlName="email" autocomplete="email">
-            <mat-error *ngIf="form.get('email').hasError('required')">Required Field</mat-error>
+            <mat-error *ngIf="form.get('email').hasError('email')">Required Field</mat-error>
             <mat-hint>e@e.com</mat-hint>
           </mat-form-field>
 
@@ -26,8 +26,8 @@
 
         </mat-card-content>
 
-        <mat-card-actions class="btn-style">
-          <button mat-raised-button [disabled]="form.invalid" color="primary" type="submit" class="ml-2">
+        <mat-card-actions class="btn-style justify-content-end">
+          <button mat-raised-button [disabled]="form.invalid" color="primary" type="submit" class="ml-2 align-self-end">
             Login
           </button>
         </mat-card-actions>

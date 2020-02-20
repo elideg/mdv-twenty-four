@@ -17,8 +17,14 @@ mat-toolbar {
   display: flex;
   justify-content: space-between;
 }
+
+.custom-color {
+  background-color: mat-color($mat-primary, 500) !important;
+}
+
+
 .mat-sidenav-container {
-  background: whitesmoke;
+  background-color: rgb(37, 37, 37);
   flex: 1;
 }
 .nav-link {
@@ -66,8 +72,9 @@ mat-toolbar {
     margin-left: 20px;
     img {
       vertical-align: middle;
-      width: 50px;
-      height: auto;
+      width: auto;
+      height: 50px;
+      padding-bottom: 2px;
     }
   }
 }

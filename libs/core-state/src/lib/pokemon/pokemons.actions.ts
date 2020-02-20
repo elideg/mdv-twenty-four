@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Pokeon.actions } from '@mdv-twenty-four/core-data';
+import { Pokemon } from '@mdv-twenty-four/core-data';
 
 export const pokemonSelected = createAction(
   '[POKEMON] Pokemon Selected',

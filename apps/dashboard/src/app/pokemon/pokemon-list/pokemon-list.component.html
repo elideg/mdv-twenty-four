@@ -1,1 +1,31 @@
-<p>pokemon-list works!</p>
+<mat-card class="mb-5">
+  <mat-card-header>
+    <mat-card-title>
+      <h1 class="border-bottom">Pokemon</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let pokemon of pokemons | slice: lowValue : highValue; let last = last;" (click)="select(pokemon)" class="mat-list-option border-bottom" [ngClass]="{'no-bottom-border': last}">
+        <h3 mat-line>
+          {{pokemon.name}}
+        </h3>
+        <p mat-line>
+          {{pokemon.description}}
+        </p>
+        <button mat-mini-fab (click)="delete(pokemon); $event.stopImmediatePropagation()" class="mr-3">
+        <mat-icon>close</mat-icon>
+        </button>
+        <button mat-icon-button class="mr-2" [routerLink]="pokemon.id" routerLinkActive="active" >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-paginator [length]="pokemons.length"
+                [pageSize]="pageSize"
+                (page)="getPaginatorData($event)">
+  </mat-paginator>
+</mat-card>
+
+

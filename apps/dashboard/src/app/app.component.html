@@ -1,0 +1,21 @@
+<mdv-twenty-four-toolbar [sidenav]="sidenav"
+                      [isAuthenticated]="userIsAuthenticated">
+
+</mdv-twenty-four-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" closeds class="app-sidenav">
+    <nav>
+      <a mat-button class="nav-link" *ngFor="let link of links" [routerLink]="link.path" routerLinkActive="active">
+        <mat-icon>
+        {{link.icon}}
+        </mat-icon>
+        {{link.title}}
+      </a>
+    </nav>
+  </mat-sidenav>
+
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

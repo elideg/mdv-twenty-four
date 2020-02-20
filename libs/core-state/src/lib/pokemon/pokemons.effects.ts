@@ -1,4 +1,4 @@
-import { PokemonsFacade } from './pokemon.facade';
+import { PokemonsFacade } from './pokemons.facade';
 import { Injectable } from '@angular/core';
 
 import { Actions, createEffect } from '@ngrx/effects';

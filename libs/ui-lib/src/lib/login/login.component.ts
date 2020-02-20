@@ -25,11 +25,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.notify.notify('Invalid User');
     const inputedUser: User = this.form.value
     if (this.form.invalid) {
-      return false;
     } else {
       if(inputedUser.email === this.userInfo.email && inputedUser.password === this.userInfo.password) {
+        this.notify.notify('Successfully logged In');
         this.authservice.setToken(inputedUser.email);
         this.router.navigate(['/pokemon'])
       }
@@ -38,10 +39,8 @@ export class LoginComponent implements OnInit {
 
   private initForm() {
     this.form = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.email])],
       password: ['', Validators.compose([Validators.required])]
     })
   }
-
-
 }

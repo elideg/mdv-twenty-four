@@ -1,4 +1,8 @@
+import { PokemonsFacade } from '@mdv-twenty-four/core-state';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { Pokemon } from '@mdv-twenty-four/core-data';
+import { FormGroup, FormGroupDirective, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'mdv-twenty-four-pokemon',
@@ -7,9 +11,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  selectedPokemon$: Observable<Pokemon> = this.pokemonsFacade.selectedPokemon$;
+  pokemons$: Observable<Pokemon[]> = this.pokemonsFacade.allPokemons$;
+
+  constructor(
+      private fb: FormBuilder,
+      private pokemonsFacade: PokemonsFacade
+  ) { }
 
   ngOnInit() {
+      this.initForm();
+      this.pokemonsFacade.loadPokemons();
+      this.selectPokemon({ id: null } as Pokemon);
+  }
+
+  selectPokemon(pokemon: Pokemon) {
+      this.form.patchValue(pokemon);
+      this.pokemonsFacade.selectPokemon(pokemon.id);
+  }
+
+  cancel() {
+      this.selectPokemon({ id: null } as Pokemon);
+      this.form.reset();
+  }
+
+  savePokemon(formDirective: FormGroupDirective) {
+      if (this.form.invalid) return;
+      if (this.form.value.id) {
+          this.pokemonsFacade.updatePokemon(this.form.value);
+          this.selectPokemon({ id: null } as Pokemon);
+      } else {
+          this.pokemonsFacade.createPokemon(this.form.value);
+          this.selectPokemon({ id: null } as Pokemon);
+      }
+  }
+
+  deletePokemon(pokemon: Pokemon) {
+      this.pokemonsFacade.deletePokemon(pokemon);
+      this.form.reset();
+  }
+
+  initForm() {
+    this.form = this.fb.group({
+      id: [''],
+      name: ['', Validators.compose([Validators.required])],
+      height: ['', Validators.compose([Validators.required])],
+      base_experience: ['', Validators.required],
+      weight: ['', Validators.required]
+    })
   }
 
 }

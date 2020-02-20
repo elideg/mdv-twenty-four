@@ -10,8 +10,7 @@ export class AuthService implements OnInit{
   constructor() {
   }
   ngOnInit() {
-    // tslint:disable-next-line: no-unused-expression
-    this.getToken() || ''
+
   }
 
   setToken(token) {
