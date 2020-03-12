@@ -11,7 +11,7 @@
 
           <mat-form-field appearance="outline" color="primary" class="w-100">
             <mat-label>Username</mat-label>
-            <input matInput type="text" placeholder="Enter Email" formControlName="email" autocomplete="email">
+            <input matInput type="email" placeholder="Enter Email" formControlName="email" autocomplete="email">
             <mat-error *ngIf="form.get('email').hasError('email')">Required Field</mat-error>
             <mat-hint>e@e.com</mat-hint>
           </mat-form-field>

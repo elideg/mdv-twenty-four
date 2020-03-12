@@ -7,19 +7,16 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-// eslint-disable-next-line @typescript-eslint/no-namespace
-declare namespace Cypress {
-  interface Chainable<Subject> {
-    login(email: string, password: string): void;
-  }
-}
 //
-// -- This is a parent command --
+//
 Cypress.Commands.add('login', (email, password) => {
-  cy.get('input[type="email"]').type(email);
-  cy.get('input[type="password"]').type(password);
-  cy.get('button[type="submit"]').click();
-});
+    cy.get('input[type="email"]').type(email);
+    cy.get('input[type="password"]').type(password);
+    cy.get('button[type="submit"]').click();
+  });
+// -- This is a parent command --
+// Cypress.Commands.add("login", (email, password) => { ... })
+//
 //
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
