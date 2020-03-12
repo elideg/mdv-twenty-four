@@ -10,8 +10,13 @@ export const pokemonSelected = createAction(
 // Load Actions
 export const loadPokemons = createAction('[POKEMON] Load Pokemons');
 
-export const pokemonsLoaded = createAction(
-  '[POKEMON] Pokemons Loaded',
+export const pokemonsLoadedFromStorage = createAction(
+  '[POKEMON] Pokemons Loaded From Local Storage',
+  props<{ pokemons: Pokemon[] }>()
+);
+
+export const pokemonsLoadedFromService = createAction(
+  '[POKEMON] Pokemons Loaded From Service',
   props<{ pokemons: Pokemon[] }>()
 );
 

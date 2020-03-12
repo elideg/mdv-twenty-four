@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 
 import { Actions, createEffect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/angular';
-import { map, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { map, tap, switchMap, withLatestFrom } from 'rxjs/operators';
+import { of, iif, defer } from 'rxjs';
 
 import * as pokemonsActions from './pokemons.actions';
 import { Pokemon, PokemonsService, NotifyService } from '@mdv-twenty-four/core-data';
 import { PokemonsPartialState } from './pokemons.reducer';
+import { Store, select } from '@ngrx/store';
+import { selectAllPokemons } from './pokemons.selectors';
 
 @Injectable()
 export class PokemonsEffects {
@@ -19,7 +21,12 @@ export class PokemonsEffects {
         state: PokemonsPartialState
       ) => {
         return this.pokemonsService.all().pipe(
-          map((pokemons: Pokemon[]) => pokemonsActions.pokemonsLoaded({ pokemons }))
+          withLatestFrom(this.store.pipe(select(selectAllPokemons))),
+          switchMap(([serviceData, localData]: any[]) => 
+          iif(() => localData.length > 0,
+              of(pokemonsActions.pokemonsLoadedFromStorage({pokemons: localData})),
+              of(pokemonsActions.pokemonsLoadedFromService({pokemons: serviceData}))
+          ))
         );
       },
       onError: (action: ReturnType<typeof pokemonsActions.loadPokemons>, error) => {
@@ -35,6 +42,7 @@ export class PokemonsEffects {
         state: PokemonsPartialState
       ) => {
         return this.pokemonsService.create(action.pokemon).pipe(
+          tap((res) => console.log(res)),
           map((pokemon: Pokemon) => pokemonsActions.pokemonCreated({ pokemon })),
           tap(() => this.notify.notify('Successfully Added a Pokemon'))
         );
@@ -84,6 +92,7 @@ export class PokemonsEffects {
     private dataPersistence: DataPersistence<PokemonsPartialState>,
     private pokemonsService: PokemonsService,
     private pokemonFacade: PokemonsFacade,
-    private notify: NotifyService
+    private notify: NotifyService,
+    private store: Store<PokemonsPartialState>
   ) {}
 }

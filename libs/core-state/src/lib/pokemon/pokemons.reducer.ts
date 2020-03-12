@@ -23,12 +23,15 @@ export const initialState: PokemonsState = pokemonsAdapter.getInitialState({
   isLoading: false
 });
 
-const pokemonsReducer = createReducer(
+export const pokemonsReducer = createReducer(
   initialState,
   on(pokemonsActions.pokemonSelected, (state, { selectedPokemonId }) =>
     Object.assign({}, state, { selectedPokemonId })
   ),
-  on(pokemonsActions.pokemonsLoaded, (state, { pokemons }) =>
+  on(pokemonsActions.pokemonsLoadedFromStorage, (state, { pokemons }) =>
+    pokemonsAdapter.addAll(pokemons, { ...state, isLoading: false })
+  ),
+  on(pokemonsActions.pokemonsLoadedFromService, (state, { pokemons }) =>
     pokemonsAdapter.addAll(pokemons, { ...state, isLoading: false })
   ),
   on(pokemonsActions.pokemonCreated, (state, { pokemon }) =>

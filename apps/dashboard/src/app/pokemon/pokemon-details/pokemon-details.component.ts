@@ -16,12 +16,13 @@ export class PokemonDetailsComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() set pokemon(value) {
     if (value) this.originalName = value.name;
-      this.currentPokemon = Object.assign({}, value)
+    this.currentPokemon = Object.assign({}, value)
   }
-
-  constructor() { }
+  
+  constructor() {}
 
   ngOnInit() {
+    this.form.patchValue(this.currentPokemon);
   }
 
   save(pokemon: Pokemon) {

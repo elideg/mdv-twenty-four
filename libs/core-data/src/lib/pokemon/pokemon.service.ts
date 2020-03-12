@@ -29,7 +29,7 @@ model = 'pokemon'
     return this.http.get<Pokemon[]>(this.getUrl()).pipe(
       map((pokemon: any) => pokemon.results.map((poke: Pokemon ) => this.stripPokemonId(poke))),
       mergeMap(pokemon => (forkJoin(pokemon.map(poke => this.http.get(this.getUrlForId(poke.id)))))),
-      map((pokemon: Pokemon[]) => pokemon.map((poke: Pokemon) => this.stripPokemonProperties(poke)))
+      map((pokemon: Pokemon[]) => pokemon.map((poke: Pokemon) => this.stripPokemonProperties(poke))) 
   )
 }
 

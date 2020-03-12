@@ -14,6 +14,7 @@ export class PokemonsFacade {
   allPokemons$ = this.store.pipe(select(pokemonsSelectors.selectAllPokemons));
   selectedPokemon$ = this.store.pipe(select(pokemonsSelectors.selectPokemon));
   pokemonLoading$ = this.store.pipe(select(pokemonsSelectors.selectPokemonsLoading));
+  // getPokemonInState = this.store.pipe(select())
 
   constructor(private store: Store<fromPokemons.PokemonsPartialState>) {}
 

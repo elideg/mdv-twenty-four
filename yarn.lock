@@ -1240,6 +1240,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@larscom/ngrx-store-storagesync@^6.1.5":
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/@larscom/ngrx-store-storagesync/-/ngrx-store-storagesync-6.1.5.tgz#1f6dcbd018923282430a8a0fe5c757195153faa4"
+  integrity sha512-0d30+WgHKzVh6qvthsQM0emjSJnB3O71JHuj0zMIWxRvPNu4NjWzZirRrRuUMju8lfLGIWgJp8Gvk88W9rSZ6Q==
+
 "@ngrx/effects@^8.6.0":
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-8.6.0.tgz#a0d7339597a5128c5cf896ddcf93f73406a45860"

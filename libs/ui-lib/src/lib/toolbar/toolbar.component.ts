@@ -21,9 +21,9 @@ export class ToolbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(!this.auth.isAuthenticated.value) {
-      this.route.navigate(['/login'])
-    }
+    // if(!this.auth.isAuthenticated.value) {
+    //   this.route.navigate(['/login'])
+    // }
   }
 
 

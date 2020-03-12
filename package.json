@@ -40,6 +40,7 @@
     "@angular/platform-browser": "^8.2.0",
     "@angular/platform-browser-dynamic": "^8.2.0",
     "@angular/router": "^8.2.0",
+    "@larscom/ngrx-store-storagesync": "^6.1.5",
     "@ngrx/effects": "^8.6.0",
     "@ngrx/entity": "^8.6.0",
     "@ngrx/router-store": "^8.6.0",

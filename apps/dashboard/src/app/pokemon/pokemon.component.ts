@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Pokemon } from '@mdv-twenty-four/core-data';
 import { FormGroup, FormGroupDirective, Validators, FormBuilder } from '@angular/forms';
+// import { metaReducers } from 'libs/core-state/src/lib/core-state.module';
 
 @Component({
   selector: 'mdv-twenty-four-pokemon',
@@ -23,12 +24,12 @@ export class PokemonComponent implements OnInit {
   ngOnInit() {
       this.initForm();
       this.pokemonsFacade.loadPokemons();
-      this.selectPokemon({ id: null } as Pokemon);
   }
 
   selectPokemon(pokemon: Pokemon) {
       this.form.patchValue(pokemon);
       this.pokemonsFacade.selectPokemon(pokemon.id);
+      // console.log(metaReducers);
   }
 
   cancel() {
